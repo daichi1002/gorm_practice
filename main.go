@@ -13,7 +13,10 @@ func main() {
 
 	postUsecase := usecase.NewPostUsecase(*postRepository)
 
-	//posts一覧取得
+	// post保存処理
+	post, err := postUsecase.CreatePost("testTitle", "testContent")
+	fmt.Println(post, err)
+	// posts一覧取得
 	posts, err := postUsecase.ListPost()
 	fmt.Println(posts, err)
 }
