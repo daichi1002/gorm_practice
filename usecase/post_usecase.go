@@ -1,6 +1,9 @@
 package usecase
 
-import "test/infra/repository"
+import (
+	"test/domain/model"
+	"test/infra/repository"
+)
 
 type PostUsecase struct {
 	repository repository.PostRepository
@@ -8,4 +11,9 @@ type PostUsecase struct {
 
 func NewPostUsecase(postRepository repository.PostRepository) *PostUsecase {
 	return &PostUsecase{repository: postRepository}
+}
+
+func (u *PostUsecase) ListPost() ([]*model.Post, error) {
+	posts, err := u.repository.ListPosts()
+	return posts, err
 }
