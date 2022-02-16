@@ -1,23 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"os"
-
-	"github.com/joho/godotenv"
+	"test/db"
+	"test/infra/repository"
 )
 
 func main() {
-	loadEnv()
-}
+	database, _ := db.ConnectDatabaseWithGorm()
+	postRepository := repository.NewPostRepository(database)
 
-func loadEnv() {
-	err := godotenv.Load(".env")
-
-	if err != nil {
-		fmt.Printf("読み込みできませんでした: %v", err)
-	}
-
-	message := os.Getenv("SAMPLE_MESSAGE")
-	fmt.Println(message)
 }

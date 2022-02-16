@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"jaccs/test/domain/model"
+	"test/domain/model"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
