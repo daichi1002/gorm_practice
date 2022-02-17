@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"net"
 	"test/db"
 	"test/infra/repository"
+	"test/server"
 	"test/usecase"
 )
 
@@ -19,4 +21,8 @@ func main() {
 	// posts一覧取得
 	posts, err := postUsecase.ListPost()
 	fmt.Println(posts, err)
+
+	s := server.NewServer()
+	listener, _ := net.Listen("tcp", ":50051")
+	s.Serve(listener)
 }
