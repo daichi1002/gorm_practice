@@ -19,6 +19,16 @@ message ListPostsResponse {
   repeated Post posts = 1;
 }
 
+message CreatePostRequest {
+  string title   = 1;
+  string content = 2;
+}
+
+message CreatePostResponse {
+  Post post = 1;
+}
+
 service PostService {
   rpc ListPosts(ListPostsRequest) returns (ListPostsResponse){}
+  rpc CreatePost(CreatePostRequest) returns (CreatePostResponse){}
 }
